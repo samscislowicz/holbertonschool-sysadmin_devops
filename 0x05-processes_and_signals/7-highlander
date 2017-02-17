@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# This script writes a infinte loop with a 2 second delay
+
+trap "echo I am invincible!!!" SIGTERM
+
+while :
+do
+	echo "To infinity and beyond"
+	sleep 2
+done
