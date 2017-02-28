@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 # installs nginx and changes the index
-
-sudo su <<HERE
-apt-get install nginx -y
-rm /usr/share/nginx/html/index.html
-echo "Holberton School" > /usr/share/nginx/html/index.html
-service nginx restart
-HERE
+sudo apt-get install -y nginx
+sudo service nginx start
+echo "Holberton School" | sudo tee /usr/share/nginx/html/index.html
