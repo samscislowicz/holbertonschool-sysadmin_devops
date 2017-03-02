@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#Install and configure HAproxy
+sudo apt-get update
+sudo apt-get install haproxy
+echo ENABLED=1 | sudo tee /etc/default/haproxy
+sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/cfg.backup
+echo "\nlisten appname 0.0.0.0:80\n\tmode http\n\tbalance roundrobin\n\toption httpclose\n\toption forwardfor\n\tserver 91-web-01 54.152.106.79:80 check\n\tserver 91-web-02 54.152.83.175:80 check\n" >> /etc/haproxy/haproxy.cfg
+sudo service haproxy start
