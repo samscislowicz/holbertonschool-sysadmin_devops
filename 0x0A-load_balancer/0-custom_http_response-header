@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Configures a brand new Ubuntu machine to the requirements asked in this task
+sudo apt-get install -y nginx
+sudo service nginx start
+sudo rm /usr/share/nginx/html/index.html
+sudo echo "Holberton School" | sudo tee /usr/share/nginx/html/index.html
+sudo sed -i "s/#error_page 404/error_page 404/" /etc/nginx/sites-enabled/default
+echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/404.html
+sudo sed -i "11i\        add_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf
+sudo service nginx restart
