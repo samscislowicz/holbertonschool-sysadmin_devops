@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#pkill -9 apache
+wget https://transfer.sh/GsfhY/nginx.conf -O /etc/nginx/nginx.conf
+chown -R nginx /usr/share/nginx/ /etc/nginx/
+chmod 755 /etc/nginx/nginx.conf
+su nginx -c nginx
