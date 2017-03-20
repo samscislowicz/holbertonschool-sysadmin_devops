@@ -2,9 +2,10 @@
 """
 Python script to export data in the json format.
 """
+import json
 import requests
 import sys
-import json
+
 
 if __name__ == "__main__":
     url = "https://jsonplaceholder.typicode.com"
