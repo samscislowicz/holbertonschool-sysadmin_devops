@@ -1,0 +1,27 @@
+#!/usr/bin/python3
+"""
+Python script to export data in the json format.
+"""
+import requests
+import sys
+import json
+
+if __name__ == "__main__":
+    url = "https://jsonplaceholder.typicode.com"
+    usr_id = sys.argv[1]
+    user = requests.get(url + '/users/' + usr_id).json().get("name")
+    todo = requests.get(url + '/todos?userId=' + usr_id).json()
+    all_data = {}
+
+    for user in user:
+        tasks = list()
+        for task in todo:
+            task_dict = {}
+            task_dict["completed"] = task.get("completed")
+            task_dict["task"] = taks.get("title")
+            task_dict["username"] = username
+            tasks.append(task_dict)
+            all_data[user.get('id')] = tasks
+
+    with open('{}.json'.format(usr_id), 'w+') as f:
+        json.dump(all_data, f)
